@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kalkulator.MainPage">
+
+    <StackLayout Padding="10">
+
+        <Frame CornerRadius="25" Padding="0">
+            <StackLayout>
+            <Label x:Name="lblHistory" Text="" HorizontalTextAlignment="End" FontSize="20"  FontFamily="Consolas" BackgroundColor="#62CBFF" Margin="0,0,0,-6" Padding="5"/>
+            <Grid ColumnDefinitions="*,12*" ColumnSpacing="0">
+                <Label x:Name="lblError" Text="" HorizontalTextAlignment="End" FontSize="30"  FontFamily="Consolas" BackgroundColor="#62CBFF" VerticalTextAlignment="End" Padding="5"/>
+                <Label x:Name="lblResult" Text="0" HorizontalTextAlignment="End" FontSize="45" FontFamily="Consolas" BackgroundColor="#62CBFF" Grid.Column="1" Padding="5"/>
+            </Grid>
+            </StackLayout>
+        </Frame>
+
+        <Grid VerticalOptions="EndAndExpand" HeightRequest="550">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button StyleClass="Operations" Text="C" Clicked="ButtonClear_Clicked"/>
+            <Button StyleClass="Operations" Text="←" Clicked="ButtonBackspace_Clicked" Grid.Column="1"/>
+            <Button StyleClass="Operations" Text="." Clicked="ButtonFloat_Clicked" Grid.Column="2"/>
+
+            <Button x:Name="Button1" Text="1" Clicked="Button_Clicked" Grid.Row="1" Grid.Column="0"/>
+            <Button x:Name="Button2" Text="2" Clicked="Button_Clicked" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="Button3" Text="3" Clicked="Button_Clicked" Grid.Row="1" Grid.Column="2"/>
+            <Button x:Name="Button4" Text="4" Clicked="Button_Clicked" Grid.Row="2" Grid.Column="0"/>
+            <Button x:Name="Button5" Text="5" Clicked="Button_Clicked" Grid.Row="2" Grid.Column="1"/>
+            <Button x:Name="Button6" Text="6" Clicked="Button_Clicked" Grid.Row="2" Grid.Column="2"/>
+            <Button x:Name="Button7" Text="7" Clicked="Button_Clicked" Grid.Row="3" Grid.Column="0"/>
+            <Button x:Name="Button8" Text="8" Clicked="Button_Clicked" Grid.Row="3" Grid.Column="1"/>
+            <Button x:Name="Button9" Text="9" Clicked="Button_Clicked" Grid.Row="3" Grid.Column="2"/>
+
+            <Button StyleClass="Operations" Text="+" Clicked="ButtonOperator_Clicked" Grid.Column="3" Grid.Row="0"/>
+            <Button StyleClass="Operations" Text="-" Clicked="ButtonOperator_Clicked" Grid.Column="3" Grid.Row="1"/>
+            <Button StyleClass="Operations" Text="x" Clicked="ButtonOperator_Clicked" Grid.Column="3" Grid.Row="2"/>
+            <Button StyleClass="Operations" Text="÷" Clicked="ButtonOperator_Clicked" Grid.Column="3" Grid.Row="3"/>
+
+            <Button StyleClass="Operations" x:Name="Button0" Text="0" Clicked="Button_Clicked" Grid.Row="4" Grid.Column="0"/>
+            <Button StyleClass="Operations" Text="+/-" Clicked="ButtonMinus_Clicked" Grid.Row="4" Grid.Column="1"/>
+            <Button StyleClass="Operations" Text="√" Clicked="ButtonSqrt_Clicked" Grid.Row="4" Grid.Column="2"/>
+            <Button StyleClass="Eq" Text="=" Clicked="ButtonResult_Clicked" Grid.Row="4" Grid.Column="3"/>
+        </Grid>
+
+        <!--
+        <StackLayout Orientation="Horizontal">
+            <Button Text="C" Clicked="ButtonClear_Clicked"/>
+            <Button Text="←" Clicked="ButtonBackspace_Clicked"/>
+            <Button Text="." Clicked="ButtonFloat_Clicked"/>
+            <Button x:Name="Button0" Text="0" Clicked="Button_Clicked"/>
+        </StackLayout>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Button1" Text="1" Clicked="Button_Clicked" Grid.Row="0" Grid.Column="0"/>
+            <Button x:Name="Button2" Text="2" Clicked="Button_Clicked" Grid.Row="0" Grid.Column="1"/>
+            <Button x:Name="Button3" Text="3" Clicked="Button_Clicked" Grid.Row="0" Grid.Column="2"/>
+            <Button x:Name="Button4" Text="4" Clicked="Button_Clicked" Grid.Row="1" Grid.Column="0"/>
+            <Button x:Name="Button5" Text="5" Clicked="Button_Clicked" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="Button6" Text="6" Clicked="Button_Clicked" Grid.Row="1" Grid.Column="2"/>
+            <Button x:Name="Button7" Text="7" Clicked="Button_Clicked" Grid.Row="2" Grid.Column="0"/>
+            <Button x:Name="Button8" Text="8" Clicked="Button_Clicked" Grid.Row="2" Grid.Column="1"/>
+            <Button x:Name="Button9" Text="9" Clicked="Button_Clicked" Grid.Row="2" Grid.Column="2"/>
+        </Grid>
+        <StackLayout Grid.Column="1" Orientation="Horizontal">
+            <Button Text="+" Clicked="ButtonOperator_Clicked"/>
+            <Button Text="-" Clicked="ButtonOperator_Clicked"/>
+            <Button Text="x" Clicked="ButtonOperator_Clicked"/>
+            <Button Text="÷" Clicked="ButtonOperator_Clicked"/>
+        </StackLayout>
+        <Button Text="=" Clicked="ButtonResult_Clicked"/>
+        -->
+    </StackLayout>
+
+</ContentPage>
