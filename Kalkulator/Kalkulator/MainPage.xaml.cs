@@ -51,7 +51,7 @@ namespace Kalkulator
         private void Button_Clicked(object sender, EventArgs e)
         {
             var button = (Button)sender;
-            if(lblResult.Text.Contains('.'))
+            if(lblResult.Text.Contains('.') && Convert.ToDecimal(lblResult.Text, culture) == 0)
             {
                 lblResult.Text += button.Text;
             }

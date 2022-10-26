@@ -8,15 +8,15 @@
 
   <Identity
     Name="DA90D84C-5391-422D-BE36-67D1CE44C12E"
-    Publisher="CN=1EDEF6B1-4906-4223-AE7E-AC49C4DDDA4F"
-    Version="1.0.0.0" />
+    Publisher="CN=pordo"
+    Version="1.0.2.0" />
 
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>Kalkulator.UWP</DisplayName>
+    <DisplayName>Kalkulator</DisplayName>
     <PublisherDisplayName>1EDEF6B1-4906-4223-AE7E-AC49C4DDDA4F</PublisherDisplayName>
-    <Logo>Assets\StoreLogo.png</Logo>
+    <Logo>Assets\Square44x44Logo.png</Logo>
   </Properties>
 
   <Dependencies>
@@ -32,16 +32,16 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="Kalkulator.UWP.App">
       <uap:VisualElements
-        DisplayName="Kalkulator.UWP"
-        Square150x150Logo="Assets\Square150x150Logo.png"
-        Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="Kalkulator.UWP"
+        DisplayName="Kalkulator"
+        Square150x150Logo="Assets\Square44x44Logo.png"
+        Square44x44Logo="Assets\Icon.png"
+        Description="Kalkulator z najważniejszymi opcjami, prosty w obsłudze."
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square310x310Logo="Assets\LargeTile.png" Square71x71Logo="Assets\SmallTile.png">
           <uap:ShowNameOnTiles>
-            <uap:ShowOn Tile="square150x150Logo" />
-            <uap:ShowOn Tile="wide310x150Logo" />
-            <uap:ShowOn Tile="square310x310Logo" />
+            <uap:ShowOn Tile="wide310x150Logo"/>
+            <uap:ShowOn Tile="square310x310Logo"/>
+            <uap:ShowOn Tile="square150x150Logo"/>
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
