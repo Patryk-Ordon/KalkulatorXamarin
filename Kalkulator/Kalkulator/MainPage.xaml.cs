@@ -32,6 +32,7 @@ namespace Kalkulator
             height = lblResult.Height;
         }
 
+        // zmniejszanie czcionki
         private void FontCheck()
         {
             //if(lblResult.Height > 80)
@@ -67,6 +68,8 @@ namespace Kalkulator
             Console.WriteLine(lblResult.FontSize);
         }
 
+
+        // wyświetlanie liczb ujemnych w nawiasie
         private string DisplayNumber(decimal number)
         {
             var num = number.ToString();
@@ -129,6 +132,7 @@ namespace Kalkulator
             FontCheck();
         }
 
+        // obsługa float
         private void ButtonFloat_Clicked(object sender, EventArgs e)
         {
             if (!lblResult.Text.Contains("."))
@@ -137,6 +141,8 @@ namespace Kalkulator
             }
         }
 
+
+        // obliczenie pierwiastka z wpisanej liczby
         private void ButtonSqrt_Clicked(object sender, EventArgs e)
         {
             double number = Convert.ToDouble(lblResult.Text);
@@ -145,6 +151,8 @@ namespace Kalkulator
             FontCheck();
         }
 
+
+        // dopisanie minusa
         private void ButtonMinus_Clicked(object sender, EventArgs e)
         {
             decimal number = 0 - Convert.ToDecimal(lblResult.Text, culture);
@@ -225,6 +233,8 @@ namespace Kalkulator
             FontCheck();
         }
 
+
+        // obsługa pamięci
         private void ButtonMR_Clicked(object sender, EventArgs e)
         {
             if(Memory != 0)
@@ -241,6 +251,8 @@ namespace Kalkulator
             Memory -= Convert.ToDecimal(lblResult.Text, culture);
         }
 
+
+        // obsługa procentów
         private void ButtonProcent_Clicked(object sender, EventArgs e)
         {
             if (Number1.ToString() == "")
@@ -256,7 +268,7 @@ namespace Kalkulator
             {
                 Number2 = Convert.ToDecimal(lblResult.Text, culture);
             }
-            switch (operation)
+            switch (operation) // przygotowanie drugiej liczby w zależnosci od działania
             {
                 case '+':
                     Number2 = (Number1*Number2/100);
