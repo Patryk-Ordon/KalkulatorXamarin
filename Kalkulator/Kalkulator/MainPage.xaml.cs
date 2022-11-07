@@ -12,6 +12,7 @@ namespace Kalkulator
 {
     public partial class MainPage : ContentPage
     {
+        double height;
         string test = "123.95";
         CultureInfo culture = new CultureInfo("en-US");
         char operation = '0';
@@ -22,19 +23,41 @@ namespace Kalkulator
         bool old = false;
         bool number2i = false;
         bool procent = false;
+        bool Number2l = false;
         decimal limit = Decimal.MaxValue;
 
         public MainPage()
         {
             InitializeComponent();
+            height = lblResult.Height;
         }
 
         private void FontCheck()
         {
-            Console.WriteLine(lblResult.Text.Length);
-            if(lblResult.Text.Length > 12)
+            //if(lblResult.Height > 80)
+            //{
+            //    int i = 2;
+            //    int x = (int)lblResult.Height;
+            //    while (x > 80)
+            //    {
+            //        double FontSize = 45 - i;
+            //        lblResult.FontSize = (int)FontSize;
+            //        x -= i;
+            //        i+=2;
+            //    }
+            //}
+            //else
+            //{
+            //    lblResult.FontSize = 45;
+            //}
+            if (lblResult.Text.Length > 26)
             {
-                double FontSize = 45-((lblResult.Text.Length - 12)*2.1);
+                double FontSize = 45 - ((lblResult.Text.Length - 12) * 1.50);
+                lblResult.FontSize = (int)FontSize;
+            }
+            else if (lblResult.Text.Length > 12)
+            {
+                double FontSize = 45 - ((lblResult.Text.Length - 12) * 1.90);
                 lblResult.FontSize = (int)FontSize;
             }
             else
@@ -53,22 +76,32 @@ namespace Kalkulator
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            var button = (Button)sender;
-            if(lblResult.Text.Contains('.') && Convert.ToDecimal(lblResult.Text, culture) == 0)
+            try
             {
-                lblResult.Text += button.Text;
+                var button = (Button)sender;
+                if (lblResult.Text.Contains('.') && Convert.ToDecimal(lblResult.Text, culture) == 0)
+                {
+                    lblResult.Text += button.Text;
+                    Number2l = false;
+                }
+                else if (lblResult.Text == "0" || (Convert.ToDecimal(lblResult.Text, culture) == Number1 && Number2l == false))
+                {
+                    lblResult.Text = button.Text;
+                    Number2l = true;
+                }
+                else
+                {
+                    lblResult.Text += button.Text;
+                    Number2l = false;
+                }
+                old = false;
+                if (Number1 != default(decimal)) number2i = true;
+                FontCheck();
             }
-            else if (lblResult.Text == "0" || Convert.ToDecimal(lblResult.Text, culture) == Number1)
+            catch
             {
-                lblResult.Text = button.Text;
+
             }
-            else
-            {
-                lblResult.Text += button.Text;
-            }
-            old = false;
-            if (Number1 != default(decimal)) number2i = true;
-            FontCheck();
         }
 
         private void ButtonClear_Clicked(object sender, EventArgs e)
@@ -121,6 +154,7 @@ namespace Kalkulator
 
         private void ButtonOperator_Clicked(object sender, EventArgs e)
         {
+            Number2l = false;
             var button = (Button)sender;
             if (!number2i)
             {
@@ -193,7 +227,8 @@ namespace Kalkulator
 
         private void ButtonMR_Clicked(object sender, EventArgs e)
         {
-            lblResult.Text = Memory.ToString();
+            if(Memory != 0)
+                lblResult.Text = Memory.ToString();
         }
 
         private void ButtonMp_Clicked(object sender, EventArgs e)

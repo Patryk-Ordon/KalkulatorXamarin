@@ -36,7 +36,7 @@
             <Button Text="M+" StyleClass="Operations" Grid.Column="2" Clicked="ButtonMp_Clicked"/>
             <Button Text="M-" StyleClass="Operations" Grid.Column="3" Clicked="ButtonMm_Clicked"/>
 
-            <Button StyleClass="Operations" Text="←" Clicked="ButtonBackspace_Clicked" Grid.Column="0" Grid.Row="1"/>
+            <Button StyleClass="Operations" Text="⌫" Clicked="ButtonBackspace_Clicked" Grid.Column="0" Grid.Row="1"/>
             <Button StyleClass="Operations" Text="%" Clicked="ButtonProcent_Clicked" Grid.Column="1" Grid.Row="1"/>
             <Button StyleClass="Operations" Text="√" Clicked="ButtonSqrt_Clicked" Grid.Column="2" Grid.Row="1"/>
 
