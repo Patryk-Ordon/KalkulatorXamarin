@@ -17,8 +17,11 @@ namespace Kalkulator
         char operation = '0';
         decimal Number1;
         decimal Number2;
+        decimal Memory = 0;
         string history;
         bool old = false;
+        bool number2i = false;
+        bool procent = false;
         decimal limit = Decimal.MaxValue;
 
         public MainPage()
@@ -31,7 +34,7 @@ namespace Kalkulator
             Console.WriteLine(lblResult.Text.Length);
             if(lblResult.Text.Length > 12)
             {
-                double FontSize = 45-((lblResult.Text.Length - 12)*1.75);
+                double FontSize = 45-((lblResult.Text.Length - 12)*2.1);
                 lblResult.FontSize = (int)FontSize;
             }
             else
@@ -64,6 +67,7 @@ namespace Kalkulator
                 lblResult.Text += button.Text;
             }
             old = false;
+            if (Number1 != default(decimal)) number2i = true;
             FontCheck();
         }
 
@@ -118,10 +122,20 @@ namespace Kalkulator
         private void ButtonOperator_Clicked(object sender, EventArgs e)
         {
             var button = (Button)sender;
-            operation = button.Text[0];
-            Number1 = Convert.ToDecimal(lblResult.Text, culture);
-            history = DisplayNumber(Number1) + " " + operation;
-            lblHistory.Text = history;
+            if (!number2i)
+            {
+                operation = button.Text[0];
+                Number1 = Convert.ToDecimal(lblResult.Text, culture);
+                history = DisplayNumber(Number1) + " " + operation;
+                lblHistory.Text = history;
+            }
+            else if (number2i)
+            {
+                ButtonResult_Clicked(sender, e);
+                operation = button.Text[0];
+                history = DisplayNumber(Number1) + " " + operation;
+                lblHistory.Text = history;
+            }
         }
 
         private void ButtonResult_Clicked(object sender, EventArgs e)
@@ -130,6 +144,9 @@ namespace Kalkulator
             if (Number1.ToString() == "")
             {
                 return;
+            }
+            else if(procent)
+            {
             }
             else
             {
@@ -169,6 +186,62 @@ namespace Kalkulator
             lblHistory.Text = history;
             Number1 = result;
             old = true;
+            number2i = false;
+            procent = false;
+            FontCheck();
+        }
+
+        private void ButtonMR_Clicked(object sender, EventArgs e)
+        {
+            lblResult.Text = Memory.ToString();
+        }
+
+        private void ButtonMp_Clicked(object sender, EventArgs e)
+        {
+            Memory += Convert.ToDecimal(lblResult.Text, culture);
+        }
+
+        private void ButtonMm_Clicked(object sender, EventArgs e)
+        {
+            Memory -= Convert.ToDecimal(lblResult.Text, culture);
+        }
+
+        private void ButtonProcent_Clicked(object sender, EventArgs e)
+        {
+            if (Number1.ToString() == "")
+            {
+                Number1 = 0;
+                Number2 = 0;
+                lblResult.Text = "0";
+                history = "0";
+                lblHistory.Text = history;
+                return;
+            }
+            else
+            {
+                Number2 = Convert.ToDecimal(lblResult.Text, culture);
+            }
+            switch (operation)
+            {
+                case '+':
+                    Number2 = (Number1*Number2/100);
+                    break;
+                case '-':
+                    Number2 = (Number1 * Number2 / 100);
+                    break;
+                case 'x':
+                    Number2 = Number2/100;
+                    break;
+                case '÷':
+                    Number2 = Number2/100;
+                    break;
+                default:
+                    return;
+            }
+            lblResult.Text = Number2.ToString();
+            history = DisplayNumber(Number1) + " " + operation + " " + DisplayNumber(Number2);
+            lblHistory.Text = history;
+            procent = true;
             FontCheck();
         }
     }
